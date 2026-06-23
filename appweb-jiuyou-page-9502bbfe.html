@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>九游娱乐 · 信息索引</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f9fafb;
+      color: #1e293b;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+      line-height: 1.7;
+      padding: 2rem 1.25rem;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    /* hero */
+    .hero {
+      margin-bottom: 2.5rem;
+    }
+    .hero h1 {
+      font-weight: 500;
+      font-size: 1.85rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.4rem;
+    }
+    .hero .sub {
+      color: #64748b;
+      font-size: 0.95rem;
+      border-left: 3px solid #cbd5e1;
+      padding-left: 0.9rem;
+      margin-top: 0.25rem;
+    }
+    /* section */
+    .section {
+      margin-bottom: 2.2rem;
+    }
+    .section-title {
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: #0f172a;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-title span {
+      display: inline-block;
+      background: #e2e8f0;
+      width: 4px;
+      height: 18px;
+      border-radius: 2px;
+    }
+    .section p, .section li {
+      color: #334155;
+      font-size: 0.96rem;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li {
+      padding: 0.3rem 0 0.3rem 1.2rem;
+      position: relative;
+    }
+    ul li::before {
+      content: "·";
+      position: absolute;
+      left: 0.3rem;
+      color: #94a3b8;
+      font-weight: 700;
+    }
+    /* 卡片目录 */
+    .index-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+      margin: 1.6rem 0 0.2rem;
+    }
+    .index-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .index-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      border-color: #cbd5e1;
+    }
+    .index-card .card-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 0.2rem;
+      font-weight: 500;
+    }
+    .index-card .card-title {
+      font-weight: 500;
+      font-size: 1rem;
+      color: #0f172a;
+      margin-bottom: 0.3rem;
+    }
+    .index-card .card-desc {
+      font-size: 0.85rem;
+      color: #64748b;
+      line-height: 1.5;
+    }
+    /* 提示区 */
+    .notice-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #94a3b8;
+      border-radius: 8px;
+      padding: 1rem 1.3rem;
+      margin: 1.6rem 0;
+    }
+    .notice-box .notice-head {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #475569;
+      letter-spacing: 0.3px;
+      margin-bottom: 0.4rem;
+    }
+    .notice-box p {
+      font-size: 0.92rem;
+      color: #334155;
+    }
+    /* 相关信息 */
+    .related-item {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 0.9rem 1.1rem;
+      border: 1px solid #f1f5f9;
+      margin-bottom: 0.7rem;
+    }
+    .related-item strong {
+      font-weight: 500;
+      color: #0f172a;
+    }
+    .related-item .meta {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      margin-top: 0.15rem;
+    }
+    .inline-link {
+      color: #2563eb;
+      text-decoration: none;
+      border-bottom: 1px solid #dbeafe;
+      transition: border-color 0.2s;
+    }
+    .inline-link:hover {
+      border-bottom-color: #2563eb;
+    }
+    /* faq */
+    .faq-item {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q {
+      font-weight: 500;
+      color: #0f172a;
+      font-size: 0.94rem;
+      margin-bottom: 0.2rem;
+    }
+    .faq-a {
+      font-size: 0.89rem;
+      color: #475569;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 2rem 0 1.2rem;
+    }
+    .footer-note {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    @media (max-width: 500px) {
+      .index-grid { grid-template-columns: 1fr; }
+      body { padding: 1.5rem 1rem; }
+      .hero h1 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- hero -->
+  <div class="hero">
+    <h1>九游娱乐 · 信息索引</h1>
+    <div class="sub">站点介绍 · 可信说明 · 知识入口</div>
+  </div>
+
+  <!-- 介绍 + 可信说明 -->
+  <div class="section">
+    <div class="section-title"><span></span>站点概述</div>
+    <p><a href="https://appweb-jiuyou.com" class="inline-link">九游娱乐</a> 是一个聚焦数字娱乐内容与服务的平台，涵盖资讯、资源索引及基础信息聚合。本站点以中立、克制的信息呈现为原则，不提供任何形式的内购、博彩或违规诱导内容。所有对外说明均基于公开可查的信息范围，用户可通过站内提供的导航入口进一步了解具体模块。</p>
+  </div>
+
+  <!-- 目录感布局：卡片 -->
+  <div class="index-grid">
+    <div class="index-card">
+      <div class="card-label">📄 内容</div>
+      <div class="card-title">分类索引</div>
+      <div class="card-desc">游戏资讯、娱乐趋势、平台动态 · 结构化归档</div>
+    </div>
+    <div class="index-card">
+      <div class="card-label">🔍 查询</div>
+      <div class="card-title">术语库</div>
+      <div class="card-desc">行业常用词、技术说明、协议简述 · 快速查阅</div>
+    </div>
+    <div class="index-card">
+      <div class="card-label">📌 导航</div>
+      <div class="card-title">关联站点</div>
+      <div class="card-desc">经核验的外部参考源 · 非推广性质</div>
+    </div>
+    <div class="index-card">
+      <div class="card-label">⚙️ 状态</div>
+      <div class="card-title">服务说明</div>
+      <div class="card-desc">站点可用性、更新频率、信息校验方式</div>
+    </div>
+  </div>
+
+  <!-- 说明区：可信说明 + 特点 -->
+  <div class="section">
+    <div class="section-title"><span></span>可信说明</div>
+    <p>所有发布于本索引页的信息均经过基础事实核对，不包含未经验证的主观断言。站点内容来源包括：官方公开文档、行业通识材料、以及经过交叉比对的中立数据。用户在使用 <a href="https://appweb-jiuyou.com" class="inline-link">九游娱乐</a> 任何子页面时，建议依据具体页面标注的更新日期与引用来源自行判断。本站不设用户注册、不收集个人隐私数据，仅作为静态信息呈现。</p>
+  </div>
+
+  <!-- 特点/场景 -->
+  <div class="section">
+    <div class="section-title"><span></span>适用场景</div>
+    <ul>
+      <li>需要快速了解娱乐信息分类架构的访客</li>
+      <li>对平台可信度与信息溯源有基础要求的查阅者</li>
+      <li>希望在不注册、无追踪环境下浏览内容的用户</li>
+      <li>内容创作者、行业观察者作为补充参考源</li>
+    </ul>
+  </div>
+
+  <!-- 提示区 -->
+  <div class="notice-box">
+    <div class="notice-head">⸻ 使用提示</div>
+    <p>本页面作为知识库入口，不包含任何跳转弹窗、自动下载或诱导分享链接。所有外部链接均以纯信息索引形式呈现，不构成推荐或背书。请根据个人判断决定是否进一步浏览 <strong>九游娱乐</strong> 其他内容板块。</p>
+  </div>
+
+  <!-- 相关信息区 -->
+  <div class="section">
+    <div class="section-title"><span></span>相关信息</div>
+    <div class="related-item">
+      <strong>信息更新周期</strong> · 每周定期核验主要链接与内容表述，重大变更即时调整。
+      <div class="meta">最近同步：2025-03-28</div>
+    </div>
+    <div class="related-item">
+      <strong>内容范围</strong> · 涵盖游戏业界动态、数字娱乐产品介绍、平台功能说明，不包含金融、医疗等跨领域信息。
+      <div class="meta">分类共计 4 个主目录、12 个子索引</div>
+    </div>
+    <div class="related-item">
+      <strong>外部引用原则</strong> · 对外站引用仅限公开可访问且内容稳定的页面，不引用临时性、需登录或内容频繁变动的页面。
+      <div class="meta">引用源均标注原始标题与访问日期</div>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="section">
+    <div class="section-title"><span></span>常见疑问摘要</div>
+    <div class="faq-item">
+      <div class="faq-q">Q: 九游娱乐是否提供下载或安装包？</div>
+      <div class="faq-a">本索引站不直接托管任何可执行文件或下载链接，仅提供指向官方或可信第三方的信息说明。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q: 站点内容的准确性如何保证？</div>
+      <div class="faq-a">每一条目的信息均基于至少两个独立来源进行核对，并在页面显著位置标注参考时间。如有疏漏可通过站点预留的反馈渠道告知。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q: 是否可以引用本页面内容？</div>
+      <div class="faq-a">欢迎在注明出处的前提下合理引用，但不得篡改原意或用于误导性宣传。建议引用时一并标注对应信息的更新时间。</div>
+    </div>
+  </div>
+
+  <hr>
+  <div class="footer-note">
+    九游娱乐 · 知识库索引页 &nbsp;|&nbsp; 信息更新于 2025-03
+  </div>
+
+</div>
+</body>
+</html>
